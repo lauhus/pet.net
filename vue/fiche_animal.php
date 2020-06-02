@@ -1,11 +1,16 @@
 <?php
+
+
 session_start();
-require '../model/manager/classPetManager.php';
+
+
+
 $accueil="Retour à l'accueil";
 $title="Informations sur votre animal";
+$name_pet=implode($_GET);
 
 $animal=new PetManager();
-$animals=$animal->selectOnePet($_SESSION['id'],$_GET);
+$animals=$animal->selectOnePet($_SESSION['id'],$name_pet);
 
 ob_start(); ?>
 
