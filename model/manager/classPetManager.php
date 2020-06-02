@@ -1,5 +1,6 @@
 <?php 
 
+
 class PetManager{
 
     private $_db;

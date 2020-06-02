@@ -75,11 +75,7 @@ public function verifEvent($start,$end)
 
 public function AssistEvent($id_user,$id_pet)
 {
-    $verif=$this->selectOneEvent($id_user,$id_pet);
-    if ($verif != null) {
-        if ($verif['date'])
-    }
-        
-    }
+
 }
+
 }
