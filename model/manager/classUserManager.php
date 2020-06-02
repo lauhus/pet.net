@@ -1,13 +1,13 @@
 <?php 
 
-class UserManager extends User{
+class UserManager{
 
 private $_db;
 
 
 public function __construct()
 {
-    $this->_db->set_db();
+    $this->set_db();
 }
 
 /**
@@ -22,10 +22,11 @@ public function set_db()
     return $this;
 }
 
-public function selectUser($id_user):array
+public function selectUser($email,$mdp)
 {
-    $req=$this->_db->prepare('SELECT * FROM user WHERE id_user = :id_user');
-    $req->bindValue(':id_user',$id_user);
+    $req=$this->_db->prepare('SELECT * FROM user WHERE email_user = :email AND mot_de_passe = :mdp ');
+    $req->bindValue(':email',$email);
+    $req->bindValue(':mdp',$mdp);
     $req->execute();
     $data=$req->fetch(PDO::FETCH_ASSOC);
     return $data;

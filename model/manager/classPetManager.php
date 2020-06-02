@@ -1,12 +1,12 @@
 <?php 
 
-class PetManager extends Pet{
+class PetManager{
 
     private $_db;
 
     public function __construct()
     {
-        $this->_db->set_db();
+        $this->set_db();
     }
 
     /**
@@ -28,7 +28,7 @@ class PetManager extends Pet{
         $req->bindValue(':id_user',$id_user);
         $req->bindValue(':name_pet',$name_pet);
         $req->execute();
-        $data=$req->fetch(PDO::FETCH_ASSOC);
+        $data=$req->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }
 
@@ -37,10 +37,19 @@ class PetManager extends Pet{
         $req=$this->_db->prepare('SELECT * FROM pet WHERE user_id_user = :id_user');
         $req->bindValue(':id_user',$id_user);
         $req->execute();
-        $data=$req->fetch(PDO::FETCH_ASSOC);
+        $data=$req->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }
 
+    public function selectAllPetName($id_user):array
+    {
+        $req=$this->_db->prepare('SELECT name_pet FROM pet WHERE user_id_user = :id_user');
+        $req->bindValue(':id_user',$id_user);
+        $req->execute();
+        $data=$req->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    }
+    
     public function deletePet($id_pet)
     {
         $req=$this->_db->prepare('DELETE FROM pet WHERE id_pet=:id_pet');
