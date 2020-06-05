@@ -2,7 +2,7 @@
 
 class Event{
 
-    private $_id;
+    private $_id_events;
     private $_date;
     private $_start;
     private $_end;
@@ -14,28 +14,28 @@ class Event{
 
     public function hydrate_event(array $array)
     {
-        if (isset($array['id'])){
-            $this->_id=$array['id'];
+        if (isset($array['id_events'])){
+            $this->set_id_events($array['id_events']);
         }
         if (isset($array['date'])){
-            $this->_date=$array['date'];
+            $this->set_date($array['date']);
         }
         if (isset($array['start'])){
-            $this->_start=$array['start'];
+            $this->set_start($array['start']);
         }
         if (isset($array['end'])){
-            $this->_end=$array['end'];
+            $this->set_end($array['end']);
         }
     }
 
     
 
     /**
-     * Get the value of _id
+     * Get the value of _id_events
      */ 
-    public function get_id()
+    public function get_id_events()
     {
-        return $this->_id;
+        return $this->_id_events;
     }
 
     /**
@@ -94,6 +94,18 @@ class Event{
     public function set_end($_end)
     {
         $this->_end = $_end;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of _id_events
+     *
+     * @return  self
+     */ 
+    public function set_id_events($_id_events)
+    {
+        $this->_id_events = $_id_events;
 
         return $this;
     }

@@ -1,5 +1,5 @@
 <?php 
-require '../model/manager/classUserManager.php';
+require '../model/manager/UserManager.php';
 
 $email=htmlspecialchars($_POST['email']);
 $mdp=htmlspecialchars($_POST['mot_de_passe']);

@@ -1,6 +1,6 @@
 <?php
 
-require 'vue/modal.php';
+require 'vue/modal_connexion.php';
 ?>
 
 <!DOCTYPE html>

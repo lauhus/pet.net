@@ -1,0 +1,48 @@
+
+.box1, .box2, .box3, .box4, .box5, .box6
+{
+    border-style: solid;
+    border-color: #D7AE24;
+    background-color: #F5DE91;
+    border-radius: 5px 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 3px;
+    text-decoration:none;
+    
+}
+
+.box{
+    display: flex;
+    justify-content: space-around;
+    border-style: solid;
+    border-color: #D7AE24;
+    background-color: #F5DE91;
+}
+
+.bienvenue{
+    display: flex;
+    align-items:center;
+    justify-content:space-around;
+    border-style: solid;
+    border-color: #D7AE24;
+    background-color: #F5DE91;
+    border-radius: 5px 5px;
+    margin-top: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 10%;
+}
+
+.image{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.pet_cam{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 5%;
+}

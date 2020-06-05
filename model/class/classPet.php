@@ -13,7 +13,8 @@ Class Pet{
     private $_eau;
     private $_box;
     private $_remarque;
-
+    private $_entree;
+    private $_sortie;
 
     public function __construct(array $array)
     {
@@ -22,39 +23,65 @@ Class Pet{
 
     public function hydrate_pet(array $array)
     {
-        if (isset($array['id_pet'])){
-            $this->_id_pet=$array['id_pet'];
+        if (isset($array[0]['id_pet'])){
+            //$this->_id_pet=$array['_id_pet'];
+            $this->set_id_pet($array[0]['id_pet']);
         }
-        if (isset($array['name_pet'])){
-            $this->_name_pet=$array['name_pet'];
+        if (isset($array[0]['name_pet'])){
+            //$this->_name_pet=$array['_name_pet'];
+            $this->set_name_pet($array[0]['name_pet']);
         }
-        if (isset($array['genre'])){
-            $this->_genre=$array['genre'];
+        if (isset($array[0]['genre'])){
+            //$this->_genre=$array['_genre'];
+            $this->set_genre($array[0]['genre']);
         }
-        if (isset($array['type'])){
-            $this->_type=$array['type'];
+        if (isset($array[0]['type'])){
+            //$this->_type=$array['_type'];
+            $this->set_type($array[0]['type']);
         }
-        if (isset($array['identification'])){
-            $this->_identification=$array['identification'];
+        if (isset($array[0]['identification'])){
+            //$this->_identification=$array['_identification'];
+            $this->set_identification($array[0]['identification']);
         }
-        if (isset($array['veterinaire'])){
-            $this->_veterinaire=$array['veterinaire'];
+        if (isset($array[0]['veterinaire'])){
+            //$this->_veterinaire=$array['_veterinaire'];
+            $this->set_veterinaire($array[0]['veterinaire']);
         }
-        if (isset($array['soins'])){
-            $this->_soins=$array['soins'];
+        if (isset($array[0]['soins'])){
+            //$this->_soins=$array['_soins'];
+            $this->set_soins($array[0]['soins']);
         }
-        if (isset($array['nourriture'])){
-            $this->_nourriture=$array['nourriture'];
+        if (isset($array[0]['nourriture'])){
+            //$this->_nourriture=$array['_nourriture'];
+            $this->set_nourriture($array[0]['nourriture']);
         }
-        if (isset($array['eau'])){
-            $this->_eau=$array['eau'];
+        if (isset($array[0]['eau'])){
+            //$this->_eau=$array['_eau'];
+            $this->set_eau($array[0]['eau']);
         }
-        if (isset($array['box'])){
-            $this->_box=$array['box'];
+        if (isset($array[0]['box'])){
+            //$this->_box=$array['_box'];
+            $this->set_box($array[0]['box']);
         }
-        if (isset($array['remarque'])){
-            $this->_remarque=$array['remarque'];
+        if (isset($array[0]['remarque'])){
+            //$this->_remarque=$array['_remarque'];
+            $this->set_remarque($array[0]['remarque']);
         }
+        if (isset($array[0]['date_entree'])){
+            //$this->_entree=$array['_date_entree'];
+            $this->set_entree($array[0]['date_entree']);
+        }
+        if (isset($array[0]['date_sortie'])){
+            //$this->_sortie=$array['_date_sortie'];
+            $this->set_sortie($array[0]['date_sortie']);
+        }
+        // foreach($array as $key => $value){
+        //     $method='set_'.$key;
+
+        //     if(method_exists($this,$method)){
+        //         $this->$method($value);
+        //     }
+        // }
     }
 
     
@@ -263,6 +290,58 @@ Class Pet{
     public function set_remarque($_remarque)
     {
         $this->_remarque = $_remarque;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of _entree
+     */ 
+    public function get_entree()
+    {
+        return $this->_entree;
+    }
+
+    /**
+     * Set the value of _entree
+     *
+     * @return  self
+     */ 
+    public function set_entree($_entree)
+    {
+        $this->_entree = $_entree;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of _sortie
+     */ 
+    public function get_sortie()
+    {
+        return $this->_sortie;
+    }
+
+    /**
+     * Set the value of _sortie
+     *
+     * @return  self
+     */ 
+    public function set_sortie($_sortie)
+    {
+        $this->_sortie = $_sortie;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of _id_pet
+     *
+     * @return  self
+     */ 
+    public function set_id_pet($_id_pet)
+    {
+        $this->_id_pet = $_id_pet;
 
         return $this;
     }
