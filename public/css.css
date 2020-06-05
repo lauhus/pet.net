@@ -1,6 +1,42 @@
+.bloc1{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.bloc2{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    color :#C48811;
+}
 
-.box1, .box2, .box3, .box4, .box5, .box6
+.bloc3{
+    display: flex;
+}
+
+.photo-para
 {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+.titre{
+    border-style: solid;
+    border-color: #D7AE24;
+    background-color: #F5DE91;
+    padding:6%;
+    text-align: center;
+    border-radius: 10px 10px;
+    margin: 5%;
+    font-size: 400%;
+}
+
+.mibloc1, .mibloc2, .mibloc3
+{
+    flex:1;
+    text-align: center;
     border-style: solid;
     border-color: #D7AE24;
     background-color: #F5DE91;
@@ -8,8 +44,14 @@
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 3px;
-    text-decoration:none;
-    
+    margin:3%;
+}
+
+.footers{
+    text-align: center;
+    display: flex;
+    position: fixed;
+    bottom: 0;
 }
 
 .box{
@@ -18,6 +60,22 @@
     border-style: solid;
     border-color: #D7AE24;
     background-color: #F5DE91;
+}
+.box1, .box2, .box3, .box4, .box5, .box6
+{
+    flex: 1;
+    border-style: solid;
+    border-color: #D7AE24;
+    background-color: #F5DE91;
+    border-radius: 5px 5px;
+    margin: 5px;
+    padding: 3px;
+    
+}
+.lien{
+    color:black;
+    text-decoration:none;
+    text-align: center;
 }
 
 .bienvenue{
@@ -40,9 +98,50 @@
     justify-content: space-around;
 }
 
+
 .pet_cam{
     display: flex;
     align-items: center;
     justify-content: space-around;
     margin-top: 5%;
+}
+.btn-retour{
+    justify-content: flex-end;
+}
+
+.condition{
+    background-color: #F5DE91;
+    text-align: center;
+}
+
+.map{
+    margin: auto;
+    margin-top: 6%;
+}
+
+.mobile{
+    display: none;
+}
+
+.contact{
+    display: flex;
+    flex-direction: column;
+    margin-top: 13%;
+    align-items: center;
+}
+.deco{
+    justify-content: right;
+    align-items:flex-end;
+}
+
+@media screen and (max-width : 800px){
+    .box{
+        display: none;
+    }
+    .mobile{
+        display: flex;
+    }
+    .photo{
+        display: none;
+    }
 }

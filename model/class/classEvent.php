@@ -1,4 +1,5 @@
 <?php
+use DateTimeInterface;
 
 class Event{
 
@@ -41,9 +42,9 @@ class Event{
     /**
      * Get the value of _date
      */ 
-    public function get_date()
+    public function get_date():DateTimeInterface
     {
-        return $this->_date;
+        return new DateTimeImmutable($this->_date);
     }
 
     /**

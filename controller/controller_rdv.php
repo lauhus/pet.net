@@ -19,11 +19,11 @@ $pets=$pet->selectOnePet($id,$name_pet);
 $id_pet=$pets[0]['id_pet'];
 
 
-$minutes_to_add=30;
-$time=new DateTime($start);
-$time->add(new DateInterval('PT'.$minutes_to_add.'M'));
-$end=$time->format('H:i');
-
-
 $rdv=new EventManager();
-$rdv->AddEvent($id,$date,$start,$end,$id_pet);
+$rdv->AddEvent($id,$date,$start,$id_pet);
+
+if ($rdv){
+    header('location:../vue/espace_client.php?message=Nouveau rendez-vous validé');
+} else {
+    header('location:../vue/rendez_vous.php?message=Erreur veuillez rééssayer');
+}

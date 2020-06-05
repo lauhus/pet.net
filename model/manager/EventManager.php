@@ -34,11 +34,11 @@ public function selectOneEvent($id_user,$id_pet):array
 
 public function selectDernierEvent($id_user)
 {
-    $req=$this->_db->prepare('SELECT date FROM events WHERE pet_user_id_user = :id_user');
+    $req=$this->_db->prepare('SELECT date FROM events WHERE pet_user_id_user = :id_user AND date >NOW()');
     $req->bindValue(':id_user',$id_user);
     $req->execute();
     $data=$req->fetch(PDO::FETCH_ASSOC);
-
+if (!empty($data)){
     $datas=max($data);
 
     $reqs=$this->_db->prepare('SELECT * FROM events WHERE date = :id_events');
@@ -46,6 +46,9 @@ public function selectDernierEvent($id_user)
     $reqs->execute();
     $dernierrdv=$reqs->fetch(PDO::FETCH_ASSOC);
     return $dernierrdv;
+} else {
+    return false;
+}
 }
 
 public function selectAllRdvPet($id_user):array
@@ -57,8 +60,12 @@ public function selectAllRdvPet($id_user):array
     return $data;
 }
 
-public function AddEvent($id_user,$date,$start,$end,$id_pet)
+public function AddEvent($id_user,$date,$start,$id_pet)
 {
+    $minutes_to_add=30;
+    $time=new DateTime($start);
+    $time->add(new DateInterval('PT'.$minutes_to_add.'M'));
+    $end=$time->format('H:i');
     $req=$this->_db->prepare('INSERT INTO events
     (date,start,end,created_by,created_at,updated_by,updated_at,pet_id_pet,pet_user_id_user)
     VALUES 
@@ -74,7 +81,7 @@ public function AddEvent($id_user,$date,$start,$end,$id_pet)
 
     if (!$donnee) {
         echo "\nPDO::errorInfo():\n";
-        print_r($req->errorInfo());}
+        print_r($req->errorInfo());}    
 }
 
 public function deleteEvent($id)
@@ -84,20 +91,11 @@ public function deleteEvent($id)
     $req->execute();
 }
 
-public function verifEvent($start,$end)
-{
-    if ($start > $end){
-        return false;
-    } else {
-        return true;
-    }
-}
+
 
 public function AssistEvent($id_user,$id_pet,$box)
 {
     
 }
-
-
 
 }

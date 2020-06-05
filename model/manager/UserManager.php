@@ -32,4 +32,11 @@ public function selectUser($email,$mdp)
     return $data;
 }
 
+public function connecte()
+{
+    if (empty($_SESSION['id'])){
+        header('location:../index.php?message=Veuillez vous connecter.');
+    } else {}
+}
+
 }

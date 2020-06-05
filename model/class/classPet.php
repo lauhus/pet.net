@@ -15,6 +15,8 @@ Class Pet{
     private $_remarque;
     private $_entree;
     private $_sortie;
+    private $_gps_longitude;
+    private $_gps_latitude;
 
     public function __construct(array $array)
     {
@@ -75,13 +77,14 @@ Class Pet{
             //$this->_sortie=$array['_date_sortie'];
             $this->set_sortie($array[0]['date_sortie']);
         }
-        // foreach($array as $key => $value){
-        //     $method='set_'.$key;
-
-        //     if(method_exists($this,$method)){
-        //         $this->$method($value);
-        //     }
-        // }
+        if (isset($array[0]['gps_longitude'])){
+            //$this->_sortie=$array['_date_sortie'];
+            $this->set_gps_longitude($array[0]['gps_longitude']);
+        }
+        if (isset($array[0]['gps_latitude'])){
+            //$this->_sortie=$array['_date_sortie'];
+            $this->set_gps_latitude($array[0]['gps_latitude']);
+        }
     }
 
     
@@ -177,9 +180,9 @@ Class Pet{
     /**
      * Get the value of _veterinaire
      */ 
-    public function get_veterinaire()
+    public function get_veterinaire():DateTimeInterface
     {
-        return $this->_veterinaire;
+        return new DateTimeImmutable($this->_veterinaire);
     }
 
     /**
@@ -297,9 +300,9 @@ Class Pet{
     /**
      * Get the value of _entree
      */ 
-    public function get_entree()
+    public function get_entree():DateTimeInterface
     {
-        return $this->_entree;
+        return new DateTimeImmutable($this->_entree);
     }
 
     /**
@@ -317,9 +320,9 @@ Class Pet{
     /**
      * Get the value of _sortie
      */ 
-    public function get_sortie()
+    public function get_sortie():DateTimeInterface
     {
-        return $this->_sortie;
+        return new DateTimeImmutable($this->_sortie);
     }
 
     /**
@@ -342,6 +345,46 @@ Class Pet{
     public function set_id_pet($_id_pet)
     {
         $this->_id_pet = $_id_pet;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of _gps_longitude
+     */ 
+    public function get_gps_longitude()
+    {
+        return $this->_gps_longitude;
+    }
+
+    /**
+     * Set the value of _gps_longitude
+     *
+     * @return  self
+     */ 
+    public function set_gps_longitude($_gps_longitude)
+    {
+        $this->_gps_longitude = $_gps_longitude;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of _gps_latitude
+     */ 
+    public function get_gps_latitude()
+    {
+        return $this->_gps_latitude;
+    }
+
+    /**
+     * Set the value of _gps_latitude
+     *
+     * @return  self
+     */ 
+    public function set_gps_latitude($_gps_latitude)
+    {
+        $this->_gps_latitude = $_gps_latitude;
 
         return $this;
     }

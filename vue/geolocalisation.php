@@ -1,24 +1,48 @@
 
 <?php 
-
 session_start();
+require '../model/manager/UserManager.php';
+$connecte=new UserManager();
+$connecte->connecte();
+
+require '../model/manager/PetManager.php';
+require '../model/class/classPet.php';
 $id=$_SESSION['id'];
 $title='Géolocalisation';
 $accueil="Retour à l'accueil";
 
+$pet=new PetManager();
+$pets=$pet->selectAllPetName($id);
 
 
 ob_start(); ?>
+
+<div class="pet_cam"> 
+
+<?php foreach ($pets as $value){?>
+    <input type="button" class="btn btn-primary" onclick="window.location.href='geolocalisation.php?nom=<?=implode($value)?>'; " value="<?=implode($value)?>"</input>
+        <?php } ?>
+</div>
+<?php 
+
+if (!empty($_GET['nom'])){
+    $oneAnimal=$pet->selectOnePet($id,$_GET['nom']);
+    $animal=new Pet($oneAnimal);
+    $latitude=json_encode($animal->get_gps_latitude());
+    $longitude=json_encode($animal->get_gps_longitude());
+?>
 <head>
-<script src='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css' rel='stylesheet' />
-</head>
-<div id='map' style='width: 400px; height: 300px;'></div>
-<script>
-mapboxgl.accessToken = 'pk.eyJ1IjoibGF1aHUiLCJhIjoiY2tiMHc1bDNtMGMwMjJ5czkzZGllMXVrNCJ9.McURjL2T6sVt5GyGk529CA';
-var map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/mapbox/streets-v11'
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css' rel='stylesheet' />
+    </head>
+    <div class="map" id='map' style='width: 400px; height: 300px;'></div>
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibGF1aHUiLCJhIjoiY2tiMHc1bDNtMGMwMjJ5czkzZGllMXVrNCJ9.McURjL2T6sVt5GyGk529CA';
+    var longitude=<?php echo $longitude; ?>;
+    var latitude=<?php echo $latitude;  ?>;
+    var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11'
 });
 map.on('load', function() {
 map.loadImage(
@@ -35,7 +59,7 @@ map.addSource('point', {
 'type': 'Feature',
 'geometry': {
 'type': 'Point',
-'coordinates': [6.1352739,49.1938424]
+'coordinates': [longitude,latitude]
 }
 }
 ]
@@ -54,6 +78,8 @@ map.addLayer({
 );
 });
 </script>
+
+<?php } ?>
 
 <?php 
 $content=ob_get_clean();
