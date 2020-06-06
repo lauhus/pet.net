@@ -23,7 +23,6 @@ $pets=$pet->selectAllPetName($_SESSION['id']);
         <div class="box">
             <div class="box1"> <a class="lien" href="espace_client.php"> <?= $accueil  ?> </a> </div>
             <div class="box2"> 
-            
                 <a class="nav-link dropdown-toggle lien" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Fiche animal</a>
                 <div class="dropdown-menu">
                 <form action="../vue/fiche_animal.php" method="get">
@@ -42,13 +41,21 @@ $pets=$pet->selectAllPetName($_SESSION['id']);
 
 
             <div class="mobile">
-                <div class="dropdown">
-                geolocalisation.php
-        <a class="dropdown-item" href="contact.php">Nous contacter </a>
-        <div class="dropdown-divider"></div>
-        <?php foreach ($pets as $value){?>
+            <a class="nav-link dropdown-toggle lien" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
+                <div class="dropdown-menu">
+                <a class="dropdown-item" href="espace_client.php"> <?= $accueil  ?> </a>
+                    <a class="dropdown-item" href="rendez_vous.php"> Rendez-vous</a>
+                    <a class="dropdown-item" href="camera.php"> Acces caméra</a>
+                    <a class="dropdown-item" href="geolocalisation.php"> Géolocalisation </a>
+                    <a class="dropdown-item" href="contact.php"> Nous contacter </a>
+                <div class="dropdown-divider"></div>
+                    <?php foreach ($pets as $value){?>
                     <a class="dropdown-item" href="../vue/fiche_animal.php?nom=<?=implode($value) ?>" > <?= $value=implode($value) ?> </a>
                         <?php } ?>
+                </div>
+            </div>
+
+
     </div>
     </div>
 

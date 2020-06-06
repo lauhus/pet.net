@@ -21,7 +21,7 @@ if (!empty($_GET)){ $message=implode($_GET);
                         <img src="../public/logo.jpg">
                         </div>
 
-                        <input type="button" class="btn btn-danger" onclick="window.location.href='../index.php?message=Vous avez été déconnecté'" value="deconnexion" </input>
+                        <input type="button" class="btn btn-danger deco" onclick="window.location.href='../index.php?message=Vous avez été déconnecté'" value="deconnexion" </input>
 <?php
 
 $content=ob_get_clean();

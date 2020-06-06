@@ -43,17 +43,17 @@ ob_start();
 require 'modal_rdv.php';?>
 
 <div class="jumbotron">
-Prochain rendez-vous : <br>
-Date: <?= $dernierRdv->get_date()->format('d/m/y'); ?> <br>
-Heure de début : <?=$dernierRdv->get_start();?> <br>
-Heure de fin : <?= $dernierRdv->get_end(); ?> <br>
-Avec : <?= $animals[0]['name_pet']; ?> <br>
-<hr>
-<a href="https://zoom.us/join"><button type="button" class="btn btn-primary">Assister au rendez-vous</button> </a> <br>
+    Prochain rendez-vous : <br>
+    Date: <?= $dernierRdv->get_date()->format('d/m/y'); ?> <br>
+    Heure de début : <?=$dernierRdv->get_start();?> <br>
+    Heure de fin : <?= $dernierRdv->get_end(); ?> <br>
+    Avec : <?= $animals[0]['name_pet']; ?> <br>
+        <hr>
+
+    <a href="https://zoom.us/join"><button type="button" class="btn btn-primary">Assister au rendez-vous</button> </a> <br>
 </div>
 <div class="jumbotron">
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Prendre un nouveau rendez-vous
-</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Prendre un nouveau rendez-vous</button>
 </div>
 <?php
 $content=ob_get_clean();

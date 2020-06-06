@@ -1,3 +1,20 @@
+body{
+    background-color: whitesmoke;
+}
+.message{
+    display: flex;
+    align-items: center;
+}
+.deco{
+    float: right;
+    margin-right: 2%;
+}
+
+.jumbotron{
+    margin-top: 5%;
+    background-color: white;
+}
+
 .bloc1{
     display: flex;
     align-items: center;
@@ -36,6 +53,9 @@
 .mibloc1, .mibloc2, .mibloc3
 {
     flex:1;
+    display: flex;
+    align-items:center;
+    justify-content:space-around;
     text-align: center;
     border-style: solid;
     border-color: #D7AE24;
@@ -105,6 +125,13 @@
     justify-content: space-around;
     margin-top: 5%;
 }
+.pet_video{
+    display:block;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
 .btn-retour{
     justify-content: flex-end;
 }
